@@ -211,7 +211,7 @@ public class RadioTest {
     public void ShouldSetNextVolumeNegativeNumber10() {
         Radio rad = new Radio();
         rad.setCurrentVolume(10);
-        int expected = 10;
+        int expected = 11;
         assertEquals(expected, rad.setNextVolume());
     }
 
