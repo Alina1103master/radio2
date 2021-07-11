@@ -1,20 +1,62 @@
-package ru.netology.domain;
+package ru.netology.domain.constructor;
 
 public class Radio {
     private int currentRadioStation;
-    private int currentVolume;
-    int maxRadioStation = 9;
+    private int radioStationNumber = 10;
     int minRadioStation = 0;
-    int maxVolume = 10;
+    private int maxRadioStation = radioStationNumber - 1;
+    private int currentVolume;
+    int maxVolume = 100;
     int minVolume = 0;
 
+    public Radio(int currentRadioStation, int radioStationNumber, int minRadioStation, int maxRadioStation, int currentVolume, int maxVolume, int minVolume) {
+        this.currentRadioStation = currentRadioStation;
+        this.radioStationNumber = radioStationNumber;
+        this.minRadioStation = minRadioStation;
+        this.maxRadioStation = maxRadioStation;
+        this.currentVolume = currentVolume;
+        this.maxVolume = maxVolume;
+        this.minVolume = minVolume;
+    }
+
+    public Radio() {
+    }
+
+    public Radio(int currentRadioStation) {
+        this.maxRadioStation = currentRadioStation - 1;
+    }
+    public Radio(int maxVolume, int minVolume) {
+        this.maxVolume = maxVolume;
+        this.minVolume = minVolume;
+    }
 
     public int getCurrentRadioStation() {
         return currentRadioStation;
     }
 
+    public int getRadioStationNumber() {
+        return radioStationNumber;
+    }
+
+    public int getMinRadioStation() {
+        return minRadioStation;
+    }
+
+    public int getMaxRadioStation() {
+        return maxRadioStation;
+
+    }
+
     public int getCurrentVolume() {
         return currentVolume;
+    }
+
+    public int getMaxVolume() {
+        return maxVolume;
+    }
+
+    public int getMinVolume() {
+        return minVolume;
     }
 
     public void setCurrentRadioStation(int currentRadioStation) {
@@ -77,5 +119,13 @@ public class Radio {
         return currentVolume;
 
 
+    }
+
+
+    public void setUpCurrentVolume() {
+        if (currentVolume>= maxVolume) {
+            return;
+        }
+        this.currentVolume--;
     }
 }

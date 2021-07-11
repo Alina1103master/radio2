@@ -1,6 +1,7 @@
-package ru.netology.domain;
+package ru.netology.domain.constructor;
 
 import org.junit.jupiter.api.Test;
+import ru.netology.domain.constructor.Radio;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -43,10 +44,10 @@ public class RadioTest {
 
     @Test
     public void ShouldSetNextRadioStationPositiveNumber2() {
-        Radio radioRock = new Radio();
-        radioRock.setCurrentRadioStation(2);
+        Radio rad = new Radio();
+        rad.setCurrentRadioStation(2);
         int expected = 3;
-        assertEquals(expected, radioRock.setNextStation());
+        assertEquals(expected, rad.setNextStation());
     }
 
     @Test
@@ -130,11 +131,20 @@ public class RadioTest {
     }
 
     @Test
-
-    public void ShouldSetVolumePositiveNumber10() {
+    public void ShouldCurrentVolumeWhenMax() {
         Radio rad = new Radio();
-        rad.setCurrentVolume(10);
-        int expected = 10;
+        rad.setCurrentVolume(100);
+        rad.setUpCurrentVolume();
+        int expected = 100;
+        assertEquals(expected, rad.getCurrentVolume());
+    }
+
+    @Test
+
+    public void ShouldSetVolumePositiveNumber20() {
+        Radio rad = new Radio();
+        rad.setCurrentVolume(19);
+        int expected = 19;
         assertEquals(expected, rad.getCurrentVolume());
     }
 
@@ -162,21 +172,8 @@ public class RadioTest {
         assertEquals(expected, rad.getCurrentVolume());
     }
 
-    @Test
-    public void ShouldSetVolumeNegativeNumber12() {
-        Radio rad = new Radio();
-        rad.setCurrentVolume(12);
-        int expected = 0;
-        assertEquals(expected, rad.getCurrentVolume());
-    }
 
-    @Test
-    public void ShouldSetVolumeNegativeNumber11() {
-        Radio rad = new Radio();
-        rad.setCurrentVolume(11);
-        int expected = 0;
-        assertEquals(expected, rad.getCurrentVolume());
-    }
+
 
     @Test
     public void ShouldSetVolumeNegative() {
@@ -214,7 +211,7 @@ public class RadioTest {
     public void ShouldSetNextVolumeNegativeNumber10() {
         Radio rad = new Radio();
         rad.setCurrentVolume(10);
-        int expected = 10;
+        int expected = 11;
         assertEquals(expected, rad.setNextVolume());
     }
 
